@@ -28,7 +28,7 @@ class Post
   def initialize(title, slug, filename, publish_date)
   	@title = title
   	@slug = slug
-    @filename = filename 
+    @filename = filename
     @publish_date = publish_date
   end
 end
