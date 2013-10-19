@@ -22,9 +22,14 @@
 
 import sys
 import webbrowser
+import os
 import SimpleHTTPServer
 from SocketServer import TCPServer
 from threading import Thread
+
+full_path = os.path.realpath(__file__)
+print "Changing directory to", os.path.dirname(full_path)
+os.chdir(os.path.dirname(full_path));
 
 if sys.argv[1:]:
     PORT = int(sys.argv[1])
