@@ -42,12 +42,13 @@ class BlogBuilder
       @posts = []
       Dir.foreach('./content/posts/') do |item|
         next if item == '.' or item == '..'
-        title = File.open("./content/posts/#{item}", &:readline)
+        title = File.open("./content/posts/#{item}", &:readline).unpack("C*").pack("U*")
         title = title.gsub("\n", "")
         title[0] = ''
         title = title.strip
         slug = item[0...-3]
-        publish_date = `git log --format='format:%ci' --diff-filter=A ./content/posts/"#{item}"`
+        # publish_date = `git log --format='format:%ci' --diff-filter=A ./content/posts/"#{item}"`
+        publish_date = Date.today.to_s
         @posts.push(Post.new(title, slug, item, publish_date))
       end
     end
@@ -63,7 +64,7 @@ class BlogBuilder
 
     def commit
       `git add .`
-      puts `git commit -m "Empress built - #{Time.now}"`
+      puts `git commit -m "Oracle built - #{Time.now}"`
     end
 
     def build!
