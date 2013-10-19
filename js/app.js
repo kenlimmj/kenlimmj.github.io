@@ -1,6 +1,6 @@
 App = Ember.Application.create();
 
-App.Title = "Empress";
+App.Title = "Oracle";
 
 // External Links
 App.ExternalLinks = [];
