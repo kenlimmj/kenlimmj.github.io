@@ -3,12 +3,12 @@ App = Ember.Application.create();
 App.Title = "Oracle";
 
 // External Links
-App.ExternalLinks = [];
-App.ExternalLink = Ember.Object.create();
-$.getJSON('./content/externalLinks.json', function(data) {
-	App.set("ExternalLinks", data);
-})
-.fail(function() { console.error("Error loading externalLinks.json"); });
+// App.ExternalLinks = [];
+// App.ExternalLink = Ember.Object.create();
+// $.getJSON('./content/externalLinks.json', function(data) {
+// 	App.set("ExternalLinks", data);
+// })
+// .fail(function() { console.error("Error loading externalLinks.json"); });
 
 // List of posts
 App.Posts = [];

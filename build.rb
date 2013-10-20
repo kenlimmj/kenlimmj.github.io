@@ -41,7 +41,6 @@ class BlogBuilder
     def set_post_metadata
       @posts = []
       Dir.foreach('./content/posts/') do |item|
-        # next if item == '.' or item == '..' or item =='.DS_Store'
         next if item[-3,3] != '.md'
         title = File.open("./content/posts/#{item}", &:readline).unpack("C*").pack("U*")
         title = title.gsub("\n", "")
