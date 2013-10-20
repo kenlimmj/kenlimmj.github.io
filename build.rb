@@ -42,7 +42,7 @@ class BlogBuilder
       @posts = []
       Dir.foreach('./content/posts/') do |item|
         # next if item == '.' or item == '..' or item =='.DS_Store'
-        next if item != '.md'
+        next if item[-3,3] != '.md'
         title = File.open("./content/posts/#{item}", &:readline).unpack("C*").pack("U*")
         title = title.gsub("\n", "")
         title[0] = ''
