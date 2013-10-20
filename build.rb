@@ -42,7 +42,7 @@ class BlogBuilder
       @posts = []
       Dir.foreach('./content/posts/') do |item|
         next if item == '.' or item == '..'
-        title = File.open("./content/posts/#{item}.md", &:readline).unpack("C*").pack("U*")
+        title = File.open("./content/posts/#{item}", &:readline).unpack("C*").pack("U*")
         title = title.gsub("\n", "")
         title[0] = ''
         title = title.strip
