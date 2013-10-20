@@ -41,7 +41,7 @@ class BlogBuilder
     def set_post_metadata
       @posts = []
       Dir.foreach('./content/posts/') do |item|
-        next if item == '.' or item == '..'
+        next if item == '.' or item == '..' or item =='.DS_Store'
         title = File.open("./content/posts/#{item}", &:readline).unpack("C*").pack("U*")
         title = title.gsub("\n", "")
         title[0] = ''
@@ -63,7 +63,7 @@ class BlogBuilder
 
     def commit
       `git add .`
-      puts `git commit -m "Oracle built - #{Time.now}"`
+      puts `git commit -m "Oracle built on #{Time.now}"`
     end
 
     def build!
