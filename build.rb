@@ -47,13 +47,13 @@ class BlogBuilder
         title[0] = ''
         title = title.strip
         slug = item[0...-3]
-        publish_date = `git log --format='format:%ci' --diff-filter=A ./content/posts/"#{item}"`
+        publish_date = `git log --format='%ci' --diff-filter=A ./content/posts/"#{item}"`
         @posts.push(Post.new(title, slug, item, publish_date))
       end
     end
 
     def jsonify_posts
-      posts = @posts.sort_by { |post| DateTime.iso8601(post.instance_variable_get(:@publish_date)).strftime }
+      posts = @posts.sort_by { |post| DateTime.iso8601(post.instance_variable_get(:@publish_date)) }
       @json_string = posts.reverse.to_json
     end
 
